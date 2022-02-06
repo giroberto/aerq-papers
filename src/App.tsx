@@ -3,6 +3,7 @@ import { FaTimes } from "react-icons/fa"
 import { useEffect, useState } from 'react';
 import Hand from './components/Hand';
 import Score from './components/Score';
+import Result from './components/Result';
 
 interface GameState {
   playerHand?: string,
@@ -96,24 +97,19 @@ function App() {
       <div className="flex flex-col items-center max-w-7xl">
         <h1 className="text-4xl mt-2">Paper Rock Scissors</h1>
         <Score playerScore={gameState.playerScore} computerScore={gameState.computerScore} playerName="Player" />
-        <div className='my-12 text-4xl'>{gameState.result || "Chose your hand"}</div>
-        <div className='flex w-full text-6xl items-center'>
-          <div id="player" className='w-full flex flex-col items-center gap-6'>
-            {renderPlayerHands()}
+        <Result onClick={clearHands} result={gameState.result}>
+          <div className='flex w-full text-6xl items-center'>
+            <div id="player" className='w-full flex flex-col items-center gap-6'>
+              {renderPlayerHands()}
+            </div>
+            <div id="versus" className='text-red-300 font-bold text-6xl' >
+              <FaTimes />
+            </div>
+            <div id="computer" className='w-full flex justify-center'>
+              <Hand selected={gameState.computerHand} rightToLeft />
+            </div>
           </div>
-          <div id="versus" className='text-red-300 font-bold text-6xl' ><FaTimes /></div>
-          <div id="computer" className='w-full flex justify-center'><Hand selected={gameState.computerHand} rightToLeft /></div>
-        </div>
-        {
-          gameState.result &&
-          <div
-            className='my-12 text-4xl border bg-white text-orange-600 rounded-md py-2 px-4 cursor-pointer'
-            onClick={() => clearHands()}
-          >
-            Play again
-          </div>
-        }
-
+        </Result>
       </div>
     </div>
   );
