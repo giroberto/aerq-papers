@@ -2,6 +2,7 @@ import './App.css';
 import { FaTimes } from "react-icons/fa"
 import { useEffect, useState } from 'react';
 import Hand from './components/Hand';
+import Score from './components/Score';
 
 interface GameState {
   playerHand?: string,
@@ -94,15 +95,7 @@ function App() {
     <div className="App bg-gradient-to-br from-[#f19700] to-[#c60022] min-h-screen font-roboto text-gray-50 flex justify-center">
       <div className="flex flex-col items-center max-w-7xl">
         <h1 className="text-4xl mt-2">Paper Rock Scissors</h1>
-        <div className='flex justify-between w-full text-xl mt-4'>
-          <span>Player Name</span>
-          <span>Computer</span>
-        </div>
-        <div className='flex justify-between w-full text-4xl font-bold mt-4'>
-          <span>{gameState.playerScore}</span>
-          <span>{gameState.computerScore}</span>
-        </div>
-
+        <Score playerScore={gameState.playerScore} computerScore={gameState.computerScore} playerName="Player" />
         <div className='my-12 text-4xl'>{gameState.result || "Chose your hand"}</div>
         <div className='flex w-full text-6xl items-center'>
           <div id="player" className='w-full flex flex-col items-center gap-6'>
