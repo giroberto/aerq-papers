@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react"
-import { FaRegQuestionCircle } from "react-icons/fa"
 import Hand from "./Hand"
 
 describe("Hand component Tests", () => {

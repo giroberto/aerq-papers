@@ -15,7 +15,7 @@ function Hand({selected, onClick, rightToLeft}: HandInterface) {
     return <FaRegHandRock className={rightToLeft ? "-rotate-90 -scale-x-100": "rotate-90"} onClick={onClick}/>
   if(selected === "Scissors")
     return <FaRegHandScissors className={rightToLeft ? "" : "-scale-x-100"} onClick={onClick} />
-  return <span onClick={onClick}>{selected}</span>;
+  return <span onClick={onClick} className="text-5xl">{selected}</span>;
 }
 
 export default Hand;
